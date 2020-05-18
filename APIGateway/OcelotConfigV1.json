@@ -1,0 +1,40 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/user/1",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/user",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "userDetails",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "8109" //"44399"
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/orders/1",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/orders",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "orders",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "8110"//"44379"
+        }
+      ]
+    }
+  ],
+  "Aggregates": [
+    {
+      "ReRouteKeys": [
+        "userDetails",
+        "orders"
+      ],
+      "UpstreamPathTemplate": "/orderdetails"
+    }
+  ],
+  "GlobalConfiguration": {}
+}
